@@ -11,6 +11,6 @@ public class ControlFlowGraph {
     }
 
     public void print() {
-        head.print("");
+        head.print("", true);
     }
 }
