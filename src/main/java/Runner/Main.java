@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         ControlFlowGraphBuilder builder = new ControlFlowGraphBuilder();
         ControlFlowGraph cfg = builder.build(Path.of("src/main/resources/test.xml"));
+        cfg.print();
         System.out.println("finished");
     }
 }

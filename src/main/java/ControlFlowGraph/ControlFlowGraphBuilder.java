@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 public class ControlFlowGraphBuilder {
     Logger logger = Logger.getLogger(ControlFlowGraphBuilder.class.getName());
+
     public ControlFlowGraph build(Path path) {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -28,12 +29,16 @@ public class ControlFlowGraphBuilder {
         return new ControlFlowGraph();
     }
 
-    public ControlFlowGraphNode traverse(Node root) {
-        NodeList children = root.getChildNodes();
-        Node nameNode = root.getAttributes().getNamedItem("name");
+    private String getAttrName(Node node, String attr) {
+        Node nameNode = node.getAttributes().getNamedItem(attr);
         String name = "";
-        if(nameNode != null) name = nameNode.getNodeValue();
-        ControlFlowGraphNode rootNode = new ControlFlowGraphNode(new ArrayList<>(), name);
+        if (nameNode != null) name = nameNode.getNodeValue();
+        return name;
+    }
+
+    private ControlFlowGraphNode traverse(Node root) {
+        NodeList children = root.getChildNodes();
+        ControlFlowGraphNode rootNode = new ControlFlowGraphNode(new ArrayList<>(), getAttrName(root, "base"), getAttrName(root, "name"));
         for (int i = 0; i < children.getLength(); i++) {
             Node child = children.item(i);
             if (child.getNodeType() != Node.ELEMENT_NODE) continue;
