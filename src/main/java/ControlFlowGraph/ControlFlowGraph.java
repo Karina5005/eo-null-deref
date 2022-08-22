@@ -1,9 +1,9 @@
 package ControlFlowGraph;
 
 public class ControlFlowGraph {
-    private Node head = new Node(null, null);
+    private ControlFlowGraphNode head = new ControlFlowGraphNode(null, null);
 
-    public ControlFlowGraph(Node head) {
+    public ControlFlowGraph(ControlFlowGraphNode head) {
         this.head = head;
     }
 

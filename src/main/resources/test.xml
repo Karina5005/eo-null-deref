@@ -1,0 +1,43 @@
+<objects>
+      <o abstract="" line="9" name="null" pos="0">
+         <o base="int" data="int" line="10" name="address" pos="2">0</o>
+      </o>
+      <o abstract="" line="12" name="someClass" pos="0">
+         <o base="memory" line="13" name="a" pos="2"/>
+         <o abstract="" line="14" name="getA" pos="2">
+            <o base="$" line="15" pos="4"/>
+            <o base=".a" line="15" method="" pos="5"/>
+         </o>
+         <o abstract="" line="16" name="setA" pos="2">
+            <o line="16" name="v" pos="3"/>
+            <o base="a" line="17" pos="4"/>
+            <o base=".write" line="17" method="" name="@" pos="5">
+               <o base="v" line="18" pos="6"/>
+            </o>
+         </o>
+      </o>
+      <o abstract="" line="20" name="printA" pos="0">
+         <o line="20" name="a" pos="1"/>
+         <o base="stdout" line="21" name="@" pos="2">
+            <o base="sprintf" line="22" pos="4">
+               <o base="string" data="string" line="23" pos="6">%d\n</o>
+               <o base="a" line="24" pos="6"/>
+            </o>
+         </o>
+      </o>
+      <o abstract="" line="26" name="main" pos="0">
+         <o line="26" name="args" pos="1" vararg=""/>
+         <o base="someClass" line="27" name="someClassObj" pos="2"/>
+         <o base="seq" line="28" name="@" pos="2">
+            <o base="someClassObj" line="29" pos="4"/>
+            <o base=".setA" line="29" method="" pos="16">
+               <o base="null" line="29" pos="23"/>
+            </o>
+            <o base="someClassObj" line="30" pos="4"/>
+            <o base=".a" line="30" method="" name="innerA" pos="16"/>
+            <o base="printA" line="31" pos="4">
+               <o base="innerA" line="31" pos="12"/>
+            </o>
+         </o>
+      </o>
+</objects>
